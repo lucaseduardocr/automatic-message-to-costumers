@@ -1,24 +1,25 @@
 import pandas as pd
 import pyautogui
-from tkinter import *
 import webbrowser
 import datetime
 from time import sleep
 from urllib.parse import quote
+from tkinter import *
 
-
+#Caminho das imagens para automação
 images = (r'C:\Users\lucas\Projetos\euvendedor\images\botao_enviar_whatsapp.png')
 
+#Caminho para encontar a planilha
 caminho_absoluto = r'C:\Users\lucas\Projetos\euvendedor\aniversarioclienteschevrolet.xlsx'
 planilha = pd.read_excel(caminho_absoluto)
 
-
+#Função para identificar a data atual e já formatar no padrão das datas da planilha
 def data_atual():
     data_atual = datetime.date.today()
     data_atual_formatada = data_atual.strftime("%d/%m/%Y")
     return data_atual_formatada      
 
-
+#Verificação se hoje é o dia do aniversário de algum cliente da lista
 def aniversario():
     for indice, linha in planilha.iterrows():
         nome = linha[0]
@@ -36,7 +37,7 @@ def aniversario():
             return aniversario_whatsapp(nome_iterado, numero_telefone_iterado, data_aniversario_iterada)
             
 
-
+#Envio da mensagem automatizada
 def aniversario_whatsapp(nome_iterado, numero_telefone_iterado, data_aniversario_iterada):
     webbrowser.open('https://web.whatsapp.com/')
     sleep(15)
@@ -59,4 +60,5 @@ def aniversario_whatsapp(nome_iterado, numero_telefone_iterado, data_aniversario
     pyautogui.hotkey('ctrl', 'w')
     sleep(7)
 
-aniversario()
+#Interface Gráfica
+
