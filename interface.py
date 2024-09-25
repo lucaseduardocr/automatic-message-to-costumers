@@ -1,12 +1,6 @@
-import tkinter as tk
-from tkinter import *
-import pandas as pd
-from app import aniversario
+from PyQt5.QtWidgets import QApplication, QLabel
 
-root = tk.Tk()
-root.title("Lembrete de aniversário")
-
-frame = tk.Frame(root)
-frame.pack(pady=20, padx=20)
-
-root.mainloop()
+app = QApplication([])
+label = QLabel('Hello Word')
+label.show()
+app.exec()
